@@ -138,8 +138,6 @@
 				86C641D62B3C1EA6007DBE4E /* ContentView.swift */,
 				86BC8E0F2B3F3040000C51F8 /* HomeMenu.swift */,
 				86C641E62B3C2198007DBE4E /* HomePage.swift */,
-				86BC8E132B3F3525000C51F8 /* CardList.swift */,
-				86BC8E112B3F33AA000C51F8 /* CardLinks.swift */,
 				86DD32A82B3C5D1800BDD598 /* HomeTextView.swift */,
 				86C641E22B3C1EE1007DBE4E /* HomeView.swift */,
 				86BC8E152B3F37D3000C51F8 /* Page.swift */,
@@ -174,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				86DD32EA2B3D737C00BDD598 /* Card.swift */,
+				86BC8E112B3F33AA000C51F8 /* CardLinks.swift */,
+				86BC8E132B3F3525000C51F8 /* CardList.swift */,
 				86DD32E62B3C8E6500BDD598 /* CustomBackButton.swift */,
 				86DD32AE2B3C655F00BDD598 /* CustomNavigationStack.swift */,
 				86C641E82B3C409B007DBE4E /* WrapperView.swift */,
