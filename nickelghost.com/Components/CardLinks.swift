@@ -15,11 +15,13 @@ struct CardLinks: View {
                         .frame(width: 1)
                 }
                 
-                Link(link.name, destination: URL(string: link.url)!)
-                    .font(.custom("Poppins-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
-                    .frame(maxWidth: .infinity)
-                    .padding(12)
-                    .foregroundStyle(.customLink)
+                if let url = URL(string: link.url), UIApplication.shared.canOpenURL(url) {
+                    Link(link.name, destination: url)
+                        .font(.custom("Poppins-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                        .frame(maxWidth: .infinity)
+                        .padding(12)
+                        .foregroundStyle(.customLink)
+                }
             }
         }
     }

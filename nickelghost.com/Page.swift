@@ -8,6 +8,8 @@ struct Page: ViewModifier {
             .navigationTitle(name)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
-            .navigationBarItems(leading: CustomBackButton())
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) { CustomBackButton() }
+            }
     }
 }

@@ -3,25 +3,27 @@ import SwiftUI
 struct Card<Content: View>: View {
     let heading: String
     let imageUrl: String?
+    let imageAlt: String?
     let technologies: [String]?
     let description: String?
     let content: () -> Content
-    
+
     init(
         heading: String,
         imageUrl: String? = nil,
+        imageAlt: String? = nil,
         technologies: [String]? = nil,
         description: String? = nil,
         content: @escaping () -> Content
     ) {
         self.heading = heading
         self.imageUrl = imageUrl
+        self.imageAlt = imageAlt
         self.technologies = technologies
         self.description = description
         self.content = content
-        return
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(heading)
@@ -29,15 +31,16 @@ struct Card<Content: View>: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(.customPrimary)
-            
+
             if let imageUrl = imageUrl {
                 AsyncImage(url: URL(string: imageUrl)) { image in
                     image.image?
                         .resizable()
                         .scaledToFit()
+                        .accessibilityLabel(imageAlt ?? "")
                 }
             }
-            
+
             if let technologies = technologies {
                 Text(technologies.joined(separator: "     "))
                     .font(.custom("Poppins-SemiBold", size: UIFont.preferredFont(forTextStyle: .headline).pointSize))
@@ -45,19 +48,19 @@ struct Card<Content: View>: View {
                     .padding(.vertical, 10)
                     .padding(.horizontal)
                     .background(Color.white.opacity(0.025))
-                
+
                 Color.customAccent.frame(height: 1)
             }
-            
+
             if let description = description {
                 Text(description)
                     .font(.custom("Poppins-Regular", size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize))
                     .padding()
             }
-            
+
             VStack(spacing: 0) {
                 Color.customAccent.frame(height: 1)
-                
+
                 content()
             }
         }

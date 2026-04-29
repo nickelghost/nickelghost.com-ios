@@ -3,34 +3,31 @@ import SwiftUI
 struct HomeView: View {
     @State private var fetchError: NickelghostAPI.Error?
     @State private var isLoading = true
-    @State private var homePage: HomePage? {
-        didSet {
-            isLoading = false
-        }
-    }
-    
+    @State private var homePage: HomePage?
+
     func fetchHomepage() async {
         do {
             homePage = try await NickelghostAPI.getHomepage()
         } catch {
             fetchError = error as? NickelghostAPI.Error
         }
+        isLoading = false
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if isLoading {
                 ProgressView()
             }
-            
+
             if let homePage = homePage {
                 Text(homePage.heading)
                     .font(.custom("Poppins-SemiBold", size: UIFont.preferredFont(forTextStyle: .title1).pointSize))
-                
+
                 HomeTextView(homePage: homePage)
                     .font(.custom("Poppins-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
             }
-            
+
             Spacer()
         }
         .padding()

@@ -6,5 +6,5 @@ struct HomePage: Codable {
     let paragraph2: [String]
     let paragraph3: [String]
     let dateOfBirth: Date
-    var isGingerFotoEnabled: Bool
+    let isGingerFotoEnabled: Bool
 }
